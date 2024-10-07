@@ -6,9 +6,13 @@ class TaskLocalRepository() {
     companion object {
         private var _INSTANCE:TaskLocalRepository? = null
         fun getInstance():TaskLocalRepository {
-            return _INSTANCE ?: TaskLocalRepository()
+            if (_INSTANCE == null) {
+                return _INSTANCE ?: TaskLocalRepository()
+            }
+            return _INSTANCE!!
         }
     }
+    private val contador:Int = 0
     private val _tasks = mutableListOf<Task>()
     init {
 
@@ -24,6 +28,7 @@ class TaskLocalRepository() {
 
     fun add(task:Task) {
         TODO("Código crear tarea")
+        _tasks.add(task)
     }
     fun delete(id:Int) {
         TODO("Código eliminar tarea por id")
@@ -31,4 +36,5 @@ class TaskLocalRepository() {
     fun update(task:Task) {
         TODO("Código actualizar tarea con id==id")
     }
+    fun getNextTaskId() = _tasks.size + 1
 }

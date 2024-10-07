@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ToDo</string>
+    <string name="crear_tarea">Crear tarea</string>
+    <string name="descripcion">Descripción</string>
+    <string name="titulo">Título</string>
+    <string name="cancel_button_tarea">Cancelar</string>
+    <string name="share_text">Crear tarea %1s %1s %1s</string>
 </resources>

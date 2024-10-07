@@ -1,15 +1,22 @@
 package com.alanturing.cpifp.todo.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alanturing.cpifp.todo.databinding.TodoItemBinding
 import com.alanturing.cpifp.todo.model.Task
 
-class TasksAdapter(val datos:List<Task>): RecyclerView.Adapter<TasksAdapter.TaskViewHolder>() {
-    inner class TaskViewHolder(binding: TodoItemBinding): RecyclerView.ViewHolder(binding.root) {
+class TasksAdapter(private val datos:List<Task>,
+                   val onShare:((t:Task,v: View)->Unit)): RecyclerView.Adapter<TasksAdapter.TaskViewHolder>() {
+    inner class TaskViewHolder(val binding: TodoItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bindTask(t:Task){
-            TODO("Asignar los elementos de pantalla")
+            binding.title.text = t.title
+            binding.description.text = t.description
+            binding.isCosmpleted.isChecked = t.isCompleted
+            binding.btnShare.setOnClickListener(
+                onShare(t,it)
+            )
         }
     }
 
